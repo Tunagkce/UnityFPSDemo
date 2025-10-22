@@ -3,8 +3,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
-    private InputSystem_Actions playerInput;
-    private InputSystem_Actions.PlayerActions playerMovements;
+    public InputSystem_Actions playerInput;
+    public InputSystem_Actions.PlayerActions playerMovements;
     private PlayerMotor playerMotor;
     private PlayerLook look;
     void Awake()
@@ -29,11 +29,11 @@ public class InputManager : MonoBehaviour
     }
     private void OnEnable()
     {
-        playerInput.Enable();
+        playerMovements.Enable();
     }
     private void OnDisable()
     {
-        playerInput.Disable();
+        playerMovements.Disable();
     }
 
 }
