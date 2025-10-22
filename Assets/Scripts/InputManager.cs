@@ -1,4 +1,5 @@
 
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
@@ -7,6 +8,7 @@ public class InputManager : MonoBehaviour
     public InputSystem_Actions.PlayerActions playerMovements;
     private PlayerMotor playerMotor;
     private PlayerLook look;
+
     void Awake()
     {
         playerInput = new InputSystem_Actions();
@@ -16,6 +18,7 @@ public class InputManager : MonoBehaviour
         playerMovements.Jump.performed += ctx => playerMotor.Jump();
         playerMovements.Sprint.performed += ctx => playerMotor.StartSprinting();
         playerMovements.Sprint.canceled += ctx => playerMotor.StopSprinting();
+
     }
     void FixedUpdate()
     {

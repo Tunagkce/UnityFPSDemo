@@ -25,17 +25,18 @@ public class PlayerInteract : MonoBehaviour
         Ray ray = new Ray(cam.transform.position, cam.transform.forward);
         Debug.DrawRay(ray.origin, ray.direction * distance);
         RaycastHit hitInfo;
-        if(Physics.Raycast(ray, out hitInfo, distance, mask))
+        if (Physics.Raycast(ray, out hitInfo, distance, mask))
         {
-            if(hitInfo.collider.GetComponent<Interactable>()!=null)
+            if (hitInfo.collider.GetComponent<Interactable>() != null)
             {
                 Interactable interactable = hitInfo.collider.GetComponent<Interactable>();
                 playerUI.UpdateText(interactable.promptMessage);
-                if(inputManager.playerMovements.Interact.triggered)
+                if (inputManager.playerMovements.Interact.triggered)
                 {
                     interactable.BaseInteract();
                 }
             }
         }
     }
+    
 }
