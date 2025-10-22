@@ -11,7 +11,8 @@ public class PlayerMotor : MonoBehaviour
     public float gravity = -9.8f;
     public float jumpHeight = 3f;
     public float walkSpeed = 5f;
-    public float sprintSpeed = 10;
+    public float sprintSpeed = 9f;
+    public float interpolationFromWalkToSpeed = 2f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -47,6 +48,8 @@ public class PlayerMotor : MonoBehaviour
     }
     public void StartSprinting()
     {
+        sprintSpeed = Mathf.Lerp(walkSpeed, sprintSpeed, interpolationFromWalkToSpeed);
+        if(isGrounded)
         currentSpeed = sprintSpeed;
     }
     public void StopSprinting()
