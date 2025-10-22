@@ -14,11 +14,14 @@ public class InputManager : MonoBehaviour
         playerMotor = GetComponent<PlayerMotor>();
         look = GetComponent<PlayerLook>();
         playerMovements.Jump.performed += ctx => playerMotor.Jump();
+        playerMovements.Sprint.performed += ctx => playerMotor.StartSprinting();
+        playerMovements.Sprint.canceled += ctx => playerMotor.StopSprinting();
     }
     void FixedUpdate()
     {
         // tell the player motor to move using the value from the movement action.
         playerMotor.ProcessMove(playerMovements.Move.ReadValue<Vector2>());
+        
     }
     void LateUpdate()
     {
